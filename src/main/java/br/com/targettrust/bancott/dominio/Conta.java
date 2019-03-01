@@ -34,10 +34,10 @@ public class Conta {
 			unique=false )
 	@ManyToOne
 	private Cliente cliente;
-	
-	@OneToMany(mappedBy="contaOrigem")
-	private List<Transacao> transacoesContaOrigem;
-	
-	@OneToMany(mappedBy="contaDestino")
-	private List<Transacao> transacoesContaDestino;
+//	
+//	@OneToMany(mappedBy="contaOrigem")
+//	private List<Transacao> transacoesContaOrigem;
+//	
+//	@OneToMany(mappedBy="contaDestino")
+//	private List<Transacao> transacoesContaDestino;
 }

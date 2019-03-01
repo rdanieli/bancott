@@ -17,6 +17,6 @@ public class Cliente {
 	@Id
 	private Long id;
 	
-	@OneToMany(mappedBy="conta")
-	private List<Conta> contas;
+//	@OneToMany(mappedBy="conta")
+//	private List<Conta> contas;
 }
