@@ -1,11 +1,9 @@
 package br.com.targettrust.bancott.dominio.dao;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.targettrust.bancott.dominio.Agencia;
 
-@Repository
-public interface AgenciaDAO extends CrudRepository<Agencia, Long>, AgenciaDAOCustom {
+public interface AgenciaDAO extends JpaRepository<Agencia, Long>, AgenciaDAOCustom {
 
 }
