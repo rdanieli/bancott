@@ -21,6 +21,10 @@ public class Cliente {
 	@Column(name="nome")
 	private String nome;
 
+	@Column(name="endereco")
+	private String endereco;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -36,6 +40,16 @@ public class Cliente {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	
 	
 	
 //	@OneToMany(mappedBy="conta")
