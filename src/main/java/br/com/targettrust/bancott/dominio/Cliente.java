@@ -1,5 +1,6 @@
 package br.com.targettrust.bancott.dominio;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="clientes")
@@ -23,6 +26,10 @@ public class Cliente {
 
 	@Column(name="endereco")
 	private String endereco;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="data_nascimento")
+	private Calendar dataNascimento;
 	
 	
 	public Long getId() {
@@ -47,6 +54,14 @@ public class Cliente {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public Calendar getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Calendar dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	
