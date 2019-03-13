@@ -49,9 +49,9 @@ public class BancottApplicationTests {
 		contas.add(c1);
 		contas.add(c2);
 		
-		ag1.setContas(contas);
+//		ag1.setContas(contas);
 		
-		agenciaDao.save(ag1);
+//		agenciaDao.save(ag1);
 	}
 
 }

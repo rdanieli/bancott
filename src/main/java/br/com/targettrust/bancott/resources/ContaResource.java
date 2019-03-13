@@ -37,6 +37,24 @@ public class ContaResource {
 	@Autowired
 	private ClienteDAO clienteDao;
 	
+	
+	@GetMapping(path="/contas/{id}")
+	public ContaDTO buscaConta(@PathVariable Long id) {
+		
+		Conta contaSalva = contaDao.findById(id).get();
+		
+		ContaDTO contaDTO = new ContaDTO();
+		
+		contaDTO.setNomeCliente(contaSalva.getCliente().getNome());
+		contaDTO.setNumeroAgencia(contaSalva.getAgencia().getNumero().toString());
+		contaDTO.setNumeroConta(contaSalva.getNumero().toString());
+		
+		contaDTO.setSaldo(contaSalva.getSaldo());
+		
+		
+		return contaDTO;
+	}
+	
 	@PostMapping(path = "/contas/{agenciaNumero}/{idCliente}")
 	public ResponseEntity criarConta(@RequestBody ContaDTO contaDTO, 
 									 @PathVariable Long agenciaNumero, 

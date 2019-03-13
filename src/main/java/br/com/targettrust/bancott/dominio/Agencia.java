@@ -29,8 +29,8 @@ public class Agencia {
 	@Column(name="cnpj")
 	private String cnpj;
 	
-	@OneToMany(mappedBy="agencia", cascade=CascadeType.ALL)
-	private List<Conta> contas;
+//	@OneToMany(mappedBy="agencia", cascade=CascadeType.ALL)
+//	private List<Conta> contas;
 
 	public Long getNumero() {
 		return numero;
@@ -64,19 +64,19 @@ public class Agencia {
 		this.cnpj = cnpj;
 	}
 
-	public List<Conta> getContas() {
-		return contas;
-	}
-
-	public void setContas(List<Conta> contas) {
-		this.contas = contas;
-	}
-
-	@Override
-	public String toString() {
-		return "Agencia [numero=" + numero + ", nome=" + nome + ", endereco=" + endereco + ", cnpj=" + cnpj
-				+ ", contas=" + contas + "]";
-	}
+//	public List<Conta> getContas() {
+//		return contas;
+//	}
+//
+//	public void setContas(List<Conta> contas) {
+//		this.contas = contas;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "Agencia [numero=" + numero + ", nome=" + nome + ", endereco=" + endereco + ", cnpj=" + cnpj
+//				+ ", contas=" + contas + "]";
+//	}
 	
 	
 	

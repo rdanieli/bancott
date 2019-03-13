@@ -8,6 +8,9 @@ public class ContaDTO {
 	
 	private Double saldo;
 
+	public ContaDTO() {
+	}
+
 	public String getNumeroConta() {
 		return numeroConta;
 	}

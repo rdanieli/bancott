@@ -26,14 +26,14 @@ public class Conta {
 			insertable=true, 
 			updatable=true, 
 			unique=false )
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private Agencia agencia;
 	
 	@JoinColumn(name="fk_cliente_id", nullable=false, 
 			insertable=true, 
 			updatable=true, 
 			unique=false )
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	private Cliente cliente;
 
 	@Column(name="saldo")
