@@ -3,6 +3,7 @@ package br.com.targettrust.bancott.resources;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +26,7 @@ import br.com.targettrust.bancott.dominio.ContaDTO;
 import br.com.targettrust.bancott.dominio.dao.AgenciaDAO;
 import br.com.targettrust.bancott.dominio.dao.ClienteDAO;
 import br.com.targettrust.bancott.dominio.dao.ContaDAO;
+import br.com.targettrust.bancott.exceptions.ContaNotFoundException;
 
 @RestController
 public class ContaResource {
@@ -36,6 +39,31 @@ public class ContaResource {
 	
 	@Autowired
 	private ClienteDAO clienteDao;
+	
+	@PutMapping(path="/contas/{id}")
+	public void atualizarSaldo(@RequestBody ContaDTO contaDto, @PathVariable Long id) {
+		//TODO: Criar a lógica
+		
+		//LER A CONTA DO BANCO
+		Optional<Conta> contaOptional = contaDao.findById(id);
+		
+		if(contaOptional.isPresent()) {
+			Conta conta = contaOptional.get();
+			
+			conta.setSaldo(contaDto.getSaldo());
+			
+			contaDao.save(conta);
+			
+		} else {
+			throw new ContaNotFoundException("A conta informada não foi encontrada.");
+		}
+		
+		
+		//ATUALIZAR O ATRIBUTO SALDO
+		
+		//RETORNAR A CONTA PARA O BANCO
+		
+	}
 	
 	
 	@GetMapping(path="/contas/{id}")
