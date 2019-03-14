@@ -2,8 +2,12 @@ package br.com.targettrust.bancott.exceptions;
 
 import java.util.Date;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +16,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 @RestController
-public class CustomizedResponseEntityExceptionHandler extends
-			 ResponseEntityExceptionHandler {
+public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	class ExceptionCustomizada {
 		private String mensagem;
@@ -31,6 +34,25 @@ public class CustomizedResponseEntityExceptionHandler extends
 		public void setDate(Date date) {
 			this.date = date;
 		}	
+	}
+	
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+				
+		ExceptionCustomizada customizada = new ExceptionCustomizada();
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for(ObjectError error : ex.getBindingResult().getAllErrors()) {
+			sb.append(error.getDefaultMessage());
+			sb.append("\n");
+		}
+		
+		customizada.setMensagem(sb.toString());
+		customizada.setDate(new Date());
+		
+		return new ResponseEntity<Object>(customizada, HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(Exception.class)

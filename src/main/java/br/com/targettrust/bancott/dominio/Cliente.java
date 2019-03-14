@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="clientes")
@@ -22,14 +25,21 @@ public class Cliente {
 	private Long id;
 	
 	@Column(name="nome")
+	@Size(min=2, message="O nome deve conter ao menos duas silabas")
 	private String nome;
 
 	@Column(name="endereco")
+	@Size(min=2, message="O endereço deve conter ao menos duas silabas")
 	private String endereco;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_nascimento")
+	@Past
 	private Calendar dataNascimento;
+	
+	@Column(name="email")
+	@Email
+	private String email;
 	
 	
 	public Long getId() {
@@ -62,6 +72,14 @@ public class Cliente {
 
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	

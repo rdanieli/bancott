@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +35,7 @@ public class ClienteResource {
 	}
 		
 	@PostMapping(path = "/clientes")
-	public ResponseEntity criarCliente(@RequestBody Cliente cliente) {
+	public ResponseEntity criarCliente(@Valid @RequestBody Cliente cliente) {
 		Cliente clienteSalvo = clienteDao.save(cliente);
 		
 		
