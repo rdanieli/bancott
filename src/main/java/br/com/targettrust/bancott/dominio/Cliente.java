@@ -25,7 +25,7 @@ public class Cliente {
 	private Long id;
 	
 	@Column(name="nome")
-	@Size(min=2, message="O nome deve conter ao menos duas silabas")
+	@Size(min=2)
 	private String nome;
 
 	@Column(name="endereco")
