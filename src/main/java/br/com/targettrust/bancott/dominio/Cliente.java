@@ -25,20 +25,20 @@ public class Cliente {
 	private Long id;
 	
 	@Column(name="nome")
-	@Size(min=2)
+	@Size(min=2, message="{cliente.nome.size}")
 	private String nome;
 
 	@Column(name="endereco")
-	@Size(min=2, message="O endereço deve conter ao menos duas silabas")
+	@Size(min=2, message="{cliente.endereco.size}")
 	private String endereco;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="data_nascimento")
-	@Past
+	@Past(message="{cliente.past.dataNascimento}")
 	private Calendar dataNascimento;
 	
 	@Column(name="email")
-	@Email
+	@Email( message="{cliente.email.email}")
 	private String email;
 	
 	
