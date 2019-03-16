@@ -3,6 +3,7 @@ package br.com.targettrust.bancott.resources;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -31,10 +32,19 @@ public class AgenciaResource {
 		
 		List<AgenciaDTO> agenciaDTOs = new ArrayList<>();
 		
+		
+		List<Agencia> a = agenciaDao.findAll()
+				  .stream()
+				  .filter(p -> p.getCnpj().equals("10.562.198/0001-50"))
+				  .collect(Collectors.toList());
+		
+		
 		for (Agencia agencia : agenciaDao.findAll()) {
-			AgenciaDTO dto = new AgenciaDTO(agencia.getNome(), agencia.getNumero());
-			
-			agenciaDTOs.add(dto);
+			if(agencia.getCnpj().equals("10.562.198/0001-50")) {
+				AgenciaDTO dto = new AgenciaDTO(agencia.getNome(), agencia.getNumero());
+				
+				agenciaDTOs.add(dto);
+			}
 		}
 		
 		return agenciaDTOs;

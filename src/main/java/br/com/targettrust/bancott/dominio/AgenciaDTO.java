@@ -1,8 +1,15 @@
 package br.com.targettrust.bancott.dominio;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description="Todos os detalhes sobre a agencia")
 public class AgenciaDTO {
 
+	@ApiModelProperty(notes="Nome da agencia")
 	private String nome;
+
+	@ApiModelProperty(notes="Numero da agencia")
 	private Long numero;
 	
 	public AgenciaDTO() {

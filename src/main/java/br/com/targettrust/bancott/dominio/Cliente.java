@@ -16,6 +16,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="clientes")
 public class Cliente {
@@ -26,6 +29,7 @@ public class Cliente {
 	
 	@Column(name="nome")
 	@Size(min=2, message="{cliente.nome.size}")
+	@ApiModelProperty(notes="O nome é obrigatório")
 	private String nome;
 
 	@Column(name="endereco")
